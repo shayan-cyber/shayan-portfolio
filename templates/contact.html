@@ -1,0 +1,217 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Shayan-Debroy Portfolio</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio/Resume of Shayan Debroy">
+    <meta name="author" content="Shayan Debroy">
+    <link rel="shortcut icon" href="{% static 'logo.png' %}">
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet'
+        type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- FontAwesome JS -->
+    <script defer src="{% static 'assets/fontawesome/js/all.js' %}"></script>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- github calendar css -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/github-calendar/dist/github-calendar-responsive.css' %}">
+    <!-- github activity css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/github-activity/src/github-activity.css' %}">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+</head>
+
+<body>
+    <!-- svg -->
+
+    <svg xmlns="http://www.w3.org/2000/svg" style="display: none;">
+        <symbol id="check-circle-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M16 8A8 8 0 1 1 0 8a8 8 0 0 1 16 0zm-3.97-3.03a.75.75 0 0 0-1.08.022L7.477 9.417 5.384 7.323a.75.75 0 0 0-1.06 1.06L6.97 11.03a.75.75 0 0 0 1.079-.02l3.992-4.99a.75.75 0 0 0-.01-1.05z"/>
+        </symbol>
+        <symbol id="info-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+        </symbol>
+        <symbol id="exclamation-triangle-fill" fill="currentColor" viewBox="0 0 16 16">
+          <path d="M8.982 1.566a1.13 1.13 0 0 0-1.96 0L.165 13.233c-.457.778.091 1.767.98 1.767h13.713c.889 0 1.438-.99.98-1.767L8.982 1.566zM8 5c.535 0 .954.462.9.995l-.35 3.507a.552.552 0 0 1-1.1 0L7.1 5.995A.905.905 0 0 1 8 5zm.002 6a1 1 0 1 1 0 2 1 1 0 0 1 0-2z"/>
+        </symbol>
+      </svg>
+
+      <!-- svg -->
+
+
+
+    <!-- ******HEADER****** -->
+    <header class="header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                    <img style="width: 10rem; height: 11rem;" class="profile-image img-fluid float-start rounded-circle"
+                        src="{% static 'shayan.jpeg' %}" alt="profile image" />
+                    <div class="profile-content">
+                        <h1 class="name">Shayan Debroy</h1>
+                        <h2 class="desc">Full Stack Developer</h2>
+                        <ul class="social list-inline">
+                            <!-- <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li> -->
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/shayan-debroy/"><i
+                                        class="fab fa-linkedin-in"></i></a></li>
+                            <li class="list-inline-item"><a href="https://github.com/shayan-cyber"><i
+                                        class="fab fa-github-alt"></i></a></li>
+                            <li class="list-inline-item"><a
+                                    href="https://stackoverflow.com/users/9353207/programmer-shayan?tab=profile"><i
+                                        class="fab fa-stack-overflow"></i></a></li>
+                            <li class="list-inline-item last-item"><a href="https://www.instagram.com/brain.planted/"><i
+                                        class="fab fa-instagram"></i></a></li>
+                        </ul>
+                    </div>
+                    <!--//profile-->
+                </div>
+                <!--//col-->
+                <div class="col-12 col-md-auto">
+                    <div class="dark-mode-switch d-flex">
+                        <div class="form-check form-switch mx-auto mx-md-0">
+                            <input type="checkbox" class="form-check-input me-2" id="darkSwitch" />
+                            <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                        </div>
+                    </div>
+                    <!--//dark-mode-switch-->
+                    <a class="btn btn-cta-primary" href="{% url 'home' %}" ><i class="fas fa-arrow-circle-left"></i> Back </a>
+                </div>
+                <!--//col-->
+            </div>
+            <!--//row-->
+        </div>
+        <!--//container-->
+    </header>
+    <!--//header-->
+
+    <div class="container sections-wrapper py-5">
+        <div class="row">
+            <div class="primary col-lg-8 col-12">
+                <section class="about section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Contact Me 📪</h2>
+                        
+                        {% for msg in messages %}
+                        <br>
+                        <div class="alert alert-success d-flex align-items-center" role="alert">
+                            <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Success:"><use xlink:href="#check-circle-fill"/></svg>
+                            <div>
+                              {{msg}}
+                            </div>
+                          </div>
+                            
+                        {% endfor %}
+                            
+                        
+
+                        <div class="content">
+                            <form action="{% url 'contact' %}" method="POST">{% csrf_token %}
+                                  <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Name</label>
+                                    <input type="text" name="name" class="form-control" id="exampleFormControlInput1" placeholder="Enter your name ...">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="exampleFormControlInput1" class="form-label">Email address</label>
+                                    <input type="email" name="email" class="form-control" id="exampleFormControlInput1" placeholder="name@example.com">
+                                  </div>
+                                  <div class="mb-3">
+                                    <label for="exampleFormControlTextarea1" class="form-label">Your Message</label>
+                                    <textarea class="form-control" name="message" id="exampleFormControlTextarea1" rows="3"></textarea>
+                                  </div>
+
+                                  <br>
+                                  <button type="submit" class="btn btn-success">Submit</button>
+
+                            </form>
+                            
+                              
+
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </section>
+                
+
+                
+                
+                
+
+               
+            </div>
+            <!--//primary-->
+            <div class="secondary col-lg-4 col-12">
+
+               
+                <!--//section-->
+                <aside class="info aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading sr-only">Basic Information</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-map-marker-alt"></i><span class="sr-only">Location:</span>Guwahati,
+                                    Assam, India</li>
+                                <li><i class="fas fa-envelope"></i><span class="sr-only">Email:</span><a
+                                        href="#">debroyshayan@gmail.com</a></li>
+                                <li><i class="fas fa-phone"></i><span class="sr-only">Phone:</span><a href="#">+91
+                                        9365456645</a></li>
+                            </ul>
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </aside>
+                <!--//aside-->
+
+               
+
+
+            </div>
+            <!--//secondary-->
+        </div>
+        <!--//row-->
+    </div>
+    <!--//masonry-->
+
+    <!-- ******FOOTER****** -->
+    <footer class="footer">
+        <div class="container text-center">
+           
+            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a
+                    href="https://www.linkedin.com/in/shayan-debroy/" target="_blank">Shayan Debroy</a></small>
+        </div>
+        <!--//container-->
+    </footer>
+    <!--//footer-->
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="{% static 'assets/plugins/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/vanilla-rss/dist/rss.global.min.js' %}"></script>
+    <script type="text/javascript"
+        src="{% static 'assets/plugins/dark-mode-switch/dark-mode-switch.min.js' %}"></script>
+    <!-- github calendar plugin -->
+    <script type="text/javascript"
+        src="{% static 'assets/plugins/github-calendar/dist/github-calendar.min.js' %}"></script>
+    <!-- github activity plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/github-activity/src/github-activity.js' %}"></script>
+
+    <!-- custom js -->
+    <script type="text/javascript" src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>

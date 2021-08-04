@@ -1,0 +1,682 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <title>Shayan-Debroy Portfolio</title>
+    <!-- Meta -->
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Portfolio/Resume of Shayan Debroy">
+    <meta name="author" content="Shayan Debroy">
+    <link rel="shortcut icon" href="{% static 'logo.png' %}">
+
+    <link href='https://fonts.googleapis.com/css?family=Lato:300,400,300italic,400italic' rel='stylesheet'
+        type='text/css'>
+    <link href='https://fonts.googleapis.com/css?family=Montserrat:400,700' rel='stylesheet' type='text/css'>
+
+    <!-- FontAwesome JS -->
+    <script defer src="{% static 'assets/fontawesome/js/all.js' %}"></script>
+
+    <!-- Global CSS -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/bootstrap/css/bootstrap.min.css' %}">
+
+    <!-- github calendar css -->
+    <link rel="stylesheet" href="{% static 'assets/plugins/github-calendar/dist/github-calendar-responsive.css' %}">
+    <!-- github activity css -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/octicons/2.0.2/octicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/plugins/github-activity/src/github-activity.css' %}">
+
+    <!-- Theme CSS -->
+    <link id="theme-style" rel="stylesheet" href="{% static 'assets/css/styles.css' %}">
+
+</head>
+
+<body>
+    <!-- ******HEADER****** -->
+    <header class="header">
+        <div class="container">
+            <div class="row align-items-center">
+                <div class="col">
+                    <img style="width: 10rem; height: 11rem;" class="profile-image img-fluid float-start rounded-circle"
+                        src="{% static 'shayan.jpeg' %}" alt="profile image" />
+                    <div class="profile-content">
+                        <h1 class="name">Shayan Debroy</h1>
+                        <h2 class="desc">Full Stack Developer</h2>
+                        <ul class="social list-inline">
+                            <!-- <li class="list-inline-item"><a href="#"><i class="fab fa-twitter"></i></a></li> -->
+                            <li class="list-inline-item"><a href="https://www.linkedin.com/in/shayan-debroy/"><i
+                                        class="fab fa-linkedin-in"></i></a></li>
+                            <li class="list-inline-item"><a href="https://github.com/shayan-cyber"><i
+                                        class="fab fa-github-alt"></i></a></li>
+                            <li class="list-inline-item"><a
+                                    href="https://stackoverflow.com/users/9353207/programmer-shayan?tab=profile"><i
+                                        class="fab fa-stack-overflow"></i></a></li>
+                            <li class="list-inline-item last-item"><a href="https://www.instagram.com/brain.planted/"><i
+                                        class="fab fa-instagram"></i></a></li>
+
+                        </ul>
+
+                    </div>
+                    <!--//profile-->
+                </div>
+                <!--//col-->
+                <div class="col-12 col-md-auto">
+                    <div class="dark-mode-switch d-flex">
+                        <div class="form-check form-switch mx-auto mx-md-0">
+                            <input type="checkbox" class="form-check-input me-2" id="darkSwitch" />
+                            <label class="custom-control-label" for="darkSwitch">Dark Mode</label>
+                        </div>
+                    </div>
+                    <!--//dark-mode-switch-->
+                    <a class="btn btn-cta-primary" href="{% url 'contact' %}"><i class="fas fa-paper-plane"></i> Contact
+                        Me</a>
+                    <a href="{{resume.resume_pdf.url}}" class="btn btn-success" download="">
+                        <img src="https://img.icons8.com/ios/22/ffffff/open-resume.png"/>
+                        Resume</a>
+                </div>
+                <!--//col-->
+            </div>
+            <!--//row-->
+        </div>
+        <!--//container-->
+    </header>
+    <!--//header-->
+
+    <div class="container sections-wrapper py-5">
+        <div class="row">
+            <div class="primary col-lg-8 col-12">
+                <section class="about section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">About Me 👋</h2>
+                        <div class="content">
+                            <p>
+                                <strong>Backend Development :</strong>
+                                I turn the screws behind the curtains of your website so you don’t have to. Get any type
+                                of website developed, ranging from to static to dynamic, and increase your user
+                                engagement. I am proficient at Python and work using the django framework.I can also
+                                develop REST API using django.
+                                <br>
+                                <strong>Frontend Development :</strong>
+                                Developing custom websites with proper effects and transitions is my goal. I can enhance
+                                the digital experience, be it a PC version or a mobile-friendly responsive design. I
+                                work with pure HTML and bootstrap to achieve these.
+                                React.js , Javascript and CSS are part of my arsenal, too. You can also show me your
+                                ideas and have them executed perfectly in your website.
+
+                                <br>
+                                <br>
+                                <i>So your website has been developed? Now its time for the world to see. I can deploy
+                                    it successfully, on pythonanywhere, heroku and Amazon Web services.</i>
+
+
+                            </p>
+
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </section>
+                <!--//section-->
+
+                <section class="latest section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Latest Projects</h2>
+                        <div class="content">
+
+                            <div class="item featured text-center">
+
+                                <div class="featured-image has-ribbon">
+                                    <a href="{{projects.0.website_link}}" target="_blank">
+                                        <img class="img-fluid project-image rounded shadow-sm"
+                                            src="{{projects.0.image.url}}" alt="project name" />
+                                    </a>
+                                    <div class="ribbon">
+                                        <div class="text">New</div>
+                                    </div>
+                                </div>
+
+                                <h3 class="title mb-3"><a href="{{projects.0.website_link}}"
+                                        target="_blank">{{projects.0.name}} <span class="year"><small
+                                                style="font-weight: lighter;"> ({{projects.0.time.date}})
+                                            </small></span></a><span
+                                        class="badge badge-theme">{{projects.0.type_of}}</span></h3>
+
+                                <div class="desc text-start">
+                                    <p>{{projects.0.description}}</p>
+                                </div>
+
+                                <!--//desc-->
+
+                                <div class="row">
+
+                                    {% for stack in projects.0.tech_stack.all %}
+                                    <div class="col">
+                                        <div class="row">
+                                            <!-- <img style="width: 100%; height: 2.5rem;" src="{{stack.icon.url}}" alt=""> -->
+                                        </div>
+                                        <div class="row">
+                                            <a class="more-link" href="{{stack.documentation}}"><small
+                                                    style="white-space: nowrap"
+                                                    class="stack"><strong>{{stack.name}}</strong></small></a>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    {% endfor %}
+
+
+                                </div>
+                                <br>
+                                <a class="btn btn-cta-secondary" href="{{projects.0.github_link}}" target="_blank"><i
+                                        style="margin-bottom: -0.1rem;" class="fab fa-github-alt"></i>Github Link</a>
+                            </div>
+                            <!--//item-->
+                            <hr class="divider" />
+
+                            {% for i in projects|slice:"1:5" %}
+                            <div class="item row">
+                                <a class="col-md-4 col-12" href="{{i.website_link}}" target="_blank">
+                                    <img class="img-fluid project-image rounded shadow-sm" src="{{i.image.url}}"
+                                        alt="project name" />
+                                </a>
+                                <div class="desc col-md-8 col-12">
+                                    <h3 class="title"><a href="{{i.website_link}}" target="_blank">{{i.name}} <span
+                                                class="year"><small style="font-weight: lighter;font-size: 0.8rem;">
+                                                    ({{i.time.date}})</small></span></a> <span
+                                            class="badge badge-theme">{{i.type_of}}</span></h3>
+                                    <p style="font-size: 0.75rem;" class="mb-2">{{i.description|truncatechars:500}}</p>
+
+                                    <div class="row">
+
+                                        {% for stack in i.tech_stack.all %}
+                                        <div class="col">
+                                            <div class="row">
+                                                <!-- <img style="width: 100%; height: 2.5rem;" src="{{stack.icon.url}}" alt=""> -->
+                                            </div>
+                                            <div class="row">
+                                                <a class="more-link" href="{{stack.documentation}}"><small
+                                                        style="white-space: nowrap"
+                                                        class="stack"><strong>{{stack.name}}</strong></small></a>
+
+                                            </div>
+
+
+                                        </div>
+
+                                        {% endfor %}
+
+
+                                    </div>
+                                    <br>
+                                    <p><a class="more-link" href="{{i.github_link}}" target="_blank"><i
+                                                class="fas fa-external-link-alt"></i>Github Repo<i
+                                                style="margin-left: 0.6rem; margin-bottom: -0.1rem;"
+                                                class="fab fa-github-alt"></i></a></p>
+
+
+                                </div>
+                                <!--//desc-->
+
+                            </div>
+                            <!--//item-->
+                            <br>
+                            {% endfor %}
+
+
+
+
+
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </section>
+                <!--//section-->
+
+                <section class="projects section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Other Projects</h2>
+                        <div class="content">
+
+                            {% for i in projects|slice:"5:10" %}
+                            <div class="item">
+                                <h3 class="title"><a href="{{i.website_link}}" target="_blank"><img
+                                            src="https://img.icons8.com/fluency/29/000000/project-management.png" />
+                                        {{i.name}} <span class="year"><small
+                                                style="font-weight: lighter;font-size: 0.8rem;">
+                                                ({{i.time.date}})</small></a> <span
+                                        class="badge badge-theme">{{i.type_of}}</span></h3>
+                                <p class="summary">{{i.description|truncatechars:300}}</p>
+
+
+                                <div class="row">
+
+                                    {% for stack in i.tech_stack.all %}
+                                    <div class="col">
+                                        <div class="row">
+                                            <!-- <img style="width: 100%; height: 2.5rem;" src="{{stack.icon.url}}" alt=""> -->
+                                        </div>
+                                        <div class="row">
+                                            <a class="more-link" href="{{stack.documentation}}"><small
+                                                    style="white-space: nowrap"
+                                                    class="stack"><strong>{{stack.name}}</strong></small></a>
+
+                                        </div>
+
+
+                                    </div>
+
+                                    {% endfor %}
+
+
+                                </div>
+                                <br>
+                                <br>
+                                <p><a class="more-link" href="{{i.github_link}}" target="_blank"><i
+                                            class="fas fa-external-link-alt"></i>Github Repo Now <i
+                                            style="margin-left: 0.6rem; margin-bottom: -0.1rem;"
+                                            class="fab fa-github-alt"></i></a></p>
+                            </div>
+                            <!--//item-->
+
+                            {% endfor %}
+
+
+
+
+                            <a class="btn btn-cta-secondary"
+                                href="https://github.com/shayan-cyber?tab=repositories">More on GitHub <i
+                                    style="margin-left: 0.6rem; margin-bottom: -0.1rem;" class="fab fa-github-alt"></i>
+                                <i class="fas fa-chevron-right pt-1"></i></a>
+
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </section>
+                <!--//section-->
+
+
+                {% if works %}
+
+
+
+                <section class="experience section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Work Experience</h2>
+                        <div class="content">
+
+                            {% for i in works %}
+                            <div class="item">
+                                <h3 class="title">{{i.position}} <span class="place"><a
+                                            href="#">{{i.company_name}}</a></span> <span class="year">({{i.start_date}}
+                                        - {{i.end_date}})</span></h3>
+                                <p>{{i.description}}</p>
+                            </div>
+
+                            {% endfor %}
+
+
+
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </section>
+
+                {% endif %}
+
+
+
+                <section class="experience section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Achievements</h2>
+                        <div class="content">
+
+                            {% for i in achievements %}
+                            <div class="item">
+                                <h3 class="title"><img src="https://img.icons8.com/color-glass/22/000000/trophy.png" />
+                                    {{i.name}} <span class="place"><a href="#"></a></span> <span
+                                        class="year">({{i.time}})</span></h3>
+                                <p>{{i.description}}</p>
+                            </div>
+
+                            {% endfor %}
+
+
+
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </section>
+
+
+
+                <!--//section-->
+                <section class="github section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">My GitHub</h2>
+
+
+                        <div id="github-graph" class="github-graph">
+
+                        </div>
+                        <!--//github-graph-->
+
+
+                        <!--//Usage: https://caseyscarborough.com/projects/github-activity/ -->
+                        <div id="ghfeed" class="ghfeed">
+                        </div>
+                        <!--//ghfeed-->
+
+                    </div>
+                    <!--//secton-inner-->
+                </section>
+                <!--//section-->
+            </div>
+            <!--//primary-->
+            <div class="secondary col-lg-4 col-12">
+
+                <aside class="education aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Education</h2>
+                        <div class="content">
+                            <div class="item">
+                                <h3 class="title"><i class="fas fa-graduation-cap"></i> BTech Electronics and
+                                    Communication</h3>
+                                <h4 class="university">National Institute of Technology, Silchar <span
+                                        class="year">(2020-2024)</span></h4>
+                            </div>
+                            <!--//item-->
+                            <div class="item">
+                                <h3 class="title"><i class="fas fa-graduation-cap"></i> 11-12th Science</h3>
+                                <h4 class="university">Cotton University <span class="year">(2018-2020)</span></h4>
+                            </div>
+                            <!--//item-->
+                            <div class="item">
+                                <h3 class="title"><i class="fas fa-graduation-cap"></i> School(10th)</h3>
+                                <h4 class="university">Shankardev Vidya Niketan, Jamunamukh <span
+                                        class="year">(2005-2018)</span></h4>
+                            </div>
+                            <!--//item-->
+
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </aside>
+                <!--//section-->
+                <aside class="info aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading sr-only">Basic Information</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-map-marker-alt"></i><span class="sr-only">Location:</span>Guwahati,
+                                    Assam, India</li>
+                                <li><i class="fas fa-envelope"></i><span class="sr-only">Email:</span><a
+                                        href="#">debroyshayan@gmail.com</a></li>
+                                <li><i class="fas fa-phone"></i><span class="sr-only">Phone:</span><a href="#">+91
+                                        9365456645</a></li>
+                            </ul>
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </aside>
+                <!--//aside-->
+
+                <aside class="skills aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Skills</h2>
+                        <div class="content">
+
+
+                            <div class="skillset">
+
+                                {% for i in skills %}
+                                <div class="item">
+                                    <h3 class="level-title">{{i.name}}<span class="level-label" data-bs-toggle="tooltip"
+                                            data-bs-placement="left" title="{{i.description}}"><i
+                                                class="fas fa-info-circle"></i>{{i.get_type_of_display}}</span></h3>
+
+                                    <div class="level-bar progress">
+                                        <div class="progress-bar level-bar-inner" role="progressbar"
+                                            style="width: {{i.amount}}%" aria-valuenow="{{i.amount}}" aria-valuemin="0"
+                                            aria-valuemax="{{i.amount}}"></div>
+                                    </div>
+                                    <!--//level-bar-->
+                                </div>
+                                <!--//item-->
+
+                                {% endfor %}
+
+
+
+
+
+
+                                <p><a class="more-link" href="https://github.com/shayan-cyber"><i
+                                            class="fas fa-external-link-alt"></i>More on GitHub</a></p>
+                            </div>
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </aside>
+                <!--//section-->
+
+                {% comment %}
+                <aside class="testimonials aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Testimonials</h2>
+                        <div class="content">
+                            <div class="item">
+                                <blockquote class="quote">
+                                    <p><i class="fas fa-quote-left"></i>James is an excellent software engineer and he
+                                        is passionate about what he does. You can totally count on him to deliver your
+                                        projects!</p>
+                                </blockquote>
+                                <p class="source"><span class="name">Tim Adams</span><br /><span class="title">Curabitur
+                                        commodo</span></p>
+                            </div>
+                            <!--//item-->
+
+                            <p><a class="more-link" href="#"><i class="fas fa-external-link-alt"></i>More on
+                                    Linkedin</a></p>
+
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </aside>
+
+                {% endcomment %}
+
+
+
+                <!--//section-->
+
+
+
+                {% comment %}
+                <aside class="blog aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Latest Blog Posts</h2>
+                        <p>You can use Sascha Depold's <a href="https://github.com/sdepold/jquery-rss"
+                                target="_blank">Vanilla RSS plugin</a> to pull in your blog post feeds.</p>
+                        <div id="rss-feeds" class="content">
+
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </aside>
+                <!--//section-->
+
+                {% endcomment %}
+
+                <aside class="languages aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Languages</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li class="item">
+                                    <span class="title"><strong>English:</strong></span>
+                                    <span class="level">Professional Proficiency <br class="visible-xs" /><i
+                                            class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                            class="fas fa-star"></i> <i class="fas fa-star"></i><i
+                                            class="fas fa-star-half"></i> </span>
+                                </li>
+                                <!--//item-->
+                                <li class="item">
+                                    <span class="title"><strong>Hindi:</strong></span>
+                                    <span class="level">Professional Proficiency <br class="visible-sm visible-xs" /><i
+                                            class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                            class="fas fa-star"></i> <i class="fas fa-star"></i><i
+                                            class="fas fa-star-half"></i></span>
+                                </li>
+                                <li class="item">
+                                    <span class="title"><strong>Bengali:</strong></span>
+                                    <span class="level">Native Speaker <br class="visible-sm visible-xs" /><i
+                                            class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                            class="fas fa-star"></i> <i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i></span>
+                                </li>
+                                <li class="item">
+                                    <span class="title"><strong>Assamese:</strong></span>
+                                    <span class="level">Native Speaker <br class="visible-sm visible-xs" /><i
+                                            class="fas fa-star"></i> <i class="fas fa-star"></i> <i
+                                            class="fas fa-star"></i> <i class="fas fa-star"></i><i
+                                            class="fas fa-star"></i></span>
+                                </li>
+                                <!--//item-->
+                            </ul>
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </aside>
+                <!--//section-->
+
+
+
+                <aside class="list music aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Favourite coding music</h2>
+                        <div class="content">
+                            <ul class="list-unstyled">
+                                <li><i class="fas fa-headphones"></i> <a
+                                        href="https://open.spotify.com/track/6ORqU0bHbVCRjXm9AjyHyZ?si=c6946ced41be4eda">Good
+                                        Riddance(Time Of Your Life)</a></li>
+                                <li><i class="fas fa-headphones"></i> <a
+                                        href="https://open.spotify.com/track/3ZffCQKLFLUvYM59XKLbVm?si=f3456118f40d416a">Wake
+                                        Me Up When September Ends</a></li>
+                                <li><i class="fas fa-headphones"></i> <a
+                                        href="https://open.spotify.com/track/1XCQhYPVUB51Aiau9EoPo6?si=168a230c2980424b">Roshni</a>
+                                </li>
+                                <li><i class="fas fa-headphones"></i> <a
+                                        href="https://open.spotify.com/track/1Uo0u1EpgR6mloX1hPeVKC?si=c65a348b122744fa">When
+                                        I'm Gone</a></li>
+                            </ul>
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </aside>
+                <!--//section-->
+
+                <aside class="list conferences aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Interests/Hobbies</h2>
+                        <div class="content">
+                            <div class="row">
+                                <div class="col-6 mt-3"> <span class="badge badge-theme">Development</span></div>
+                                <div class="col-6 mt-3"> <span class="badge badge-theme">Writing Poems</span></div>
+
+                                <div class="col-6 mt-3"> <span class="badge badge-theme">Console Games </span></div>
+                                <div class="col-6 mt-3"> <span class="badge badge-theme">Cricket</span></div>
+                            </div>
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </aside>
+                <!--//section-->
+
+                <aside class="credits aside section">
+                    <div class="section-inner shadow-sm rounded">
+                        <h2 class="heading">Credits</h2>
+                        <div class="content">
+                            <ul class="list-unstyled pb-2">
+                                <li><a href="https://getbootstrap.com/" target="_blank"><i
+                                            class="fas fa-external-link-alt"></i>Bootstrap</a></li>
+                                <li><a href="https://fortawesome.github.io/Font-Awesome/" target="_blank"><i
+                                            class="fas fa-external-link-alt"></i>FontAwesome</a></li>
+                                <li><a href="https://github.com/IonicaBizau/github-calendar" target="_blank"><i
+                                            class="fas fa-external-link-alt"></i>GitHub Calendar Plugin</a></li>
+
+                                <li><a href="https://caseyscarborough.com/projects/github-activity/" target="_blank"><i
+                                            class="fas fa-external-link-alt"></i>GitHub Activity Stream</a></li>
+
+                                <!-- <li><a href="https://github.com/sdepold/vanilla-rss" target="_blank"><i
+                                            class="fas fa-external-link-alt"></i>Vanilla RSS</a></li> -->
+                                <li><a href="https://github.com/coliff/dark-mode-switch"><i
+                                            class="fas fa-external-link-alt"></i>Dark Mode Switch</a></li>
+
+                            </ul>
+
+                            <hr />
+
+                            <p class="pt-2">This portfolio is handcrafted using these resources
+                            </p>
+
+
+                        </div>
+                        <!--//content-->
+                    </div>
+                    <!--//section-inner-->
+                </aside>
+                <!--//section-->
+
+            </div>
+            <!--//secondary-->
+        </div>
+        <!--//row-->
+    </div>
+    <!--//masonry-->
+
+    <!-- ******FOOTER****** -->
+    <footer class="footer">
+        <div class="container text-center">
+            
+            <small class="copyright">Designed with <i class="fas fa-heart"></i> by <a
+                    href="https://www.linkedin.com/in/shayan-debroy/" target="_blank">Shayan Debroy</a></small>
+        </div>
+        <!--//container-->
+    </footer>
+    <!--//footer-->
+
+    <!-- Javascript -->
+    <script type="text/javascript" src="{% static 'assets/plugins/popper.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/bootstrap/js/bootstrap.min.js' %}"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/vanilla-rss/dist/rss.global.min.js' %}"></script>
+    <script type="text/javascript"
+        src="{% static 'assets/plugins/dark-mode-switch/dark-mode-switch.min.js' %}"></script>
+    <!-- github calendar plugin -->
+    <script type="text/javascript"
+        src="{% static 'assets/plugins/github-calendar/dist/github-calendar.min.js' %}"></script>
+    <!-- github activity plugin -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/3.0.0/mustache.js"></script>
+    <script type="text/javascript" src="//cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+    <script type="text/javascript" src="{% static 'assets/plugins/github-activity/src/github-activity.js' %}"></script>
+
+    <!-- custom js -->
+    <script type="text/javascript" src="{% static 'assets/js/main.js' %}"></script>
+</body>
+
+</html>
